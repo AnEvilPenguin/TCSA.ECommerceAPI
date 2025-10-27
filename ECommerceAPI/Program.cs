@@ -1,6 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+using ECommerceAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
-app.MapGet("/", () => "Hello World!");
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<CommerceContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CommerceContext")));
+    
+var app = builder.Build();
 
 app.Run();
