@@ -1,9 +1,7 @@
 namespace ECommerceAPI.Models;
 
-public class Product
+public class Sale
 {
     public int ID { get; set; }
-    public required string Name { get; set; }
-    public string? Description { get; set; }
     public required ICollection<ProductSale> ProductSales { get; set; }
 }
