@@ -33,7 +33,7 @@ public class DbInitializer
         {
             new ProductSale { ProductID = 1, Quantity = 1, SaleID = 1 },
             new ProductSale { ProductID = 2, Quantity = 2, SaleID = 2 },
-            new ProductSale { ProductID = 1, Quantity = 1, SaleID = 1 },
+            new ProductSale { ProductID = 1, Quantity = 1, SaleID = 2 },
         };
         
         context.ProductSales.AddRange(productSales);
