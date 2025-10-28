@@ -1,13 +1,19 @@
 using ECommerceAPI.DataSource;
-using ECommerceAPI.Models;
+using ECommerceAPI.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddOpenApi();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+builder.Services.AddControllers();
+
 builder.Services.AddDbContext<CommerceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CommerceContext")));
 
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 var app = builder.Build();
 
@@ -19,5 +25,11 @@ using (var scope = app.Services.CreateScope())
     context.Database.EnsureCreated();
     DbInitializer.Initialize(context);
 }
+
+app.MapOpenApi();
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.MapControllers();
 
 app.Run();
