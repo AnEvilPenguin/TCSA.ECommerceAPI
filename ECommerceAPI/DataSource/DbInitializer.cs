@@ -1,4 +1,6 @@
-namespace ECommerceAPI.Models;
+using ECommerceAPI.Models;
+
+namespace ECommerceAPI.DataSource;
 
 public class DbInitializer
 {
