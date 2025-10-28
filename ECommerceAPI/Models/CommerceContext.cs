@@ -13,10 +13,10 @@ public class CommerceContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<ProductSale>().ToTable("ProductSale")
+        modelBuilder.Entity<ProductSale>().ToTable("ProductSale");
+        modelBuilder.Entity<Product>().ToTable("Product")
             .Property(e => e.Price)
-            .HasPrecision(19, 6);
-        modelBuilder.Entity<Product>().ToTable("Product");
+            .HasPrecision(19, 6);;
         modelBuilder.Entity<Sale>().ToTable("Sale");
     }
 }

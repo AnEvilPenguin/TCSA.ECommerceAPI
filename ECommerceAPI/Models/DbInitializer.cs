@@ -11,8 +11,8 @@ public class DbInitializer
 
         var products = new Product[]
         {
-            new Product { Name = "Shadow Alchemist: Alchemy in the Shadows" },
-            new Product { Name = "F-You Earth!", Description = "My second game jam entry" }
+            new Product { Name = "Shadow Alchemist: Alchemy in the Shadows", Price = new decimal(3.50d) },
+            new Product { Name = "F-You Earth!", Description = "My second game jam entry", Price = new decimal(4.20d) }
         };
 
         context.Products.AddRange(products);
@@ -29,9 +29,9 @@ public class DbInitializer
 
         var productSales = new ProductSale[]
         {
-            new ProductSale { Price = new decimal(3.50d), ProductID = 1, Quantity = 1, SaleID = 1 },
-            new ProductSale { Price = new decimal(4.20d), ProductID = 2, Quantity = 2, SaleID = 2 },
-            new ProductSale { Price = new decimal(5.00d), ProductID = 1, Quantity = 1, SaleID = 1 },
+            new ProductSale { ProductID = 1, Quantity = 1, SaleID = 1 },
+            new ProductSale { ProductID = 2, Quantity = 2, SaleID = 2 },
+            new ProductSale { ProductID = 1, Quantity = 1, SaleID = 1 },
         };
         
         context.ProductSales.AddRange(productSales);
