@@ -17,6 +17,7 @@ public class ProductService(CommerceContext dbContext) : IProductService
 
     public Product? GetProduct(int id)
     {
+        // might be doing too much here
         return dbContext.Products
             .Include(p => p.ProductSales.Where(ps => ps.ProductID == id))
             .ThenInclude(s => s.Sale)
