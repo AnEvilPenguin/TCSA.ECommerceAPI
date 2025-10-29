@@ -14,7 +14,8 @@ public class DbInitializer
         var products = new Product[]
         {
             new Product { Name = "Shadow Alchemist: Alchemy in the Shadows", Price = new decimal(3.50d) },
-            new Product { Name = "F-You Earth!", Description = "My second game jam entry", Price = new decimal(4.20d) }
+            new Product { Name = "F-You Earth!", Description = "My second game jam entry", Price = new decimal(4.20d) },
+            new Product { Name = "Spacelancer", Description = "My nemesis", Price = new decimal(6.40d), Deleted = true },
         };
 
         context.Products.AddRange(products);

@@ -10,6 +10,7 @@ public class ProductService(CommerceContext dbContext) : IProductService
     public IEnumerable<ProductDto> GetProducts(int skip = 0, int take = 50)
     {
         return dbContext.Products
+            .Where(p => !p.Deleted)
             .Skip(skip)
             .Take(take)
             .Select(p => ProductDto.FromProduct(p));
@@ -19,6 +20,7 @@ public class ProductService(CommerceContext dbContext) : IProductService
     {
         // might be doing too much here
         return dbContext.Products
+            .Where(p => !p.Deleted)
             .Include(p => p.ProductSales.Where(ps => ps.ProductID == id))
             .ThenInclude(s => s.Sale)
             .AsNoTracking()
