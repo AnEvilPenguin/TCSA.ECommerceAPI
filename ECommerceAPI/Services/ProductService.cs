@@ -11,6 +11,7 @@ public class ProductService(CommerceContext dbContext) : IProductService
     {
         return dbContext.Products
             .Where(p => !p.Deleted)
+            .OrderBy(p => p.ID)
             .Skip(skip)
             .Take(take)
             .Select(p => ProductDto.FromProduct(p));
