@@ -19,7 +19,7 @@ public class ProductController(IProductService productService) : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public ActionResult<ProductAndSaleDto> GetProduct(int id)
+    public ActionResult<ProductDto> GetProduct(int id)
     {
         var result = productService.GetProduct(id);
 
@@ -28,6 +28,6 @@ public class ProductController(IProductService productService) : ControllerBase
             return NotFound();
         }
 
-        return Ok(ProductAndSaleDto.FromProductAndSale(result));
+        return Ok(ProductDto.FromProduct(result));
     }
 }
