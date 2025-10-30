@@ -7,14 +7,13 @@ namespace ECommerceAPI.Services;
 
 public class ProductService(CommerceContext dbContext) : IProductService
 {
-    public IEnumerable<ProductDto> GetProducts(int skip = 0, int take = 50)
+    public IEnumerable<Product> GetProducts(int skip = 0, int take = 50)
     {
         return dbContext.Products
             .Where(p => !p.Deleted)
             .OrderBy(p => p.ID)
             .Skip(skip)
-            .Take(take)
-            .Select(p => ProductDto.FromProduct(p));
+            .Take(take);
     }
 
     public Product? GetProduct(int id)

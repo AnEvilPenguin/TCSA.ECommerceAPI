@@ -5,7 +5,7 @@ namespace ECommerceAPI.Services;
 
 public interface IProductService
 {
-    public IEnumerable<ProductDto> GetProducts(int skip, int take);
+    public IEnumerable<Product> GetProducts(int skip, int take);
     public Product? GetProduct(int id);
     public IEnumerable<ProductSale>? GetProductSale(int id, int skip, int take);
     public Product? UpdateProduct(int id, ProductUpdateDto productUpdateDto);

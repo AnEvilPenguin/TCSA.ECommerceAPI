@@ -15,7 +15,7 @@ public class ProductController(IProductService productService) : ControllerBase
         if (skip < 0 || take < 1)
             return BadRequest();
         
-        return Ok(productService.GetProducts(skip, take));
+        return Ok(productService.GetProducts(skip, take).Select(ProductDto.FromProduct));
     }
 
     [HttpGet("{id}")]
