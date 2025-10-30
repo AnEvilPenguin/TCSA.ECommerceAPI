@@ -12,6 +12,9 @@ public class ProductController(IProductService productService) : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<ProductDto>> GetProducts(int skip = 0, int take = 50)
     {
+        if (skip < 0 || take < 1)
+            return BadRequest();
+        
         return Ok(productService.GetProducts(skip, take));
     }
 
