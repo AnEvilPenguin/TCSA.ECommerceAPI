@@ -28,11 +28,27 @@ public class ProductService(CommerceContext dbContext) : IProductService
     {
         if (!dbContext.Products.Any(p => p.ID == id))
             return null;
-        
+
         return dbContext.ProductSales
             .Where(ps => ps.ProductID == id)
             .OrderBy(ps => ps.ID)
             .Skip(skip)
             .Take(take);
+    }
+
+    public Product? UpdateProduct(int id, ProductUpdateDto product)
+    {
+        if (product.Price < 0)
+            throw new Exception("Pice cannot be negative");
+
+        var rows = dbContext.Products
+            .Where(p => p.ID == id)
+            .ExecuteUpdate(s =>
+                s.SetProperty(p => p.Name, p => product.Name)
+                    .SetProperty(p => p.Description, p => product.Description)
+                    .SetProperty(p => p.Price, p => product.Price)
+            );
+
+        return rows < 1 ? null : dbContext.Products.Single(p => p.ID == id);
     }
 }

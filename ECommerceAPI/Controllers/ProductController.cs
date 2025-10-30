@@ -24,9 +24,7 @@ public class ProductController(IProductService productService) : ControllerBase
         var result = productService.GetProduct(id);
 
         if (result == null)
-        {
             return NotFound();
-        }
 
         return Ok(ProductDto.FromProduct(result));
     }
@@ -44,5 +42,23 @@ public class ProductController(IProductService productService) : ControllerBase
         
         return Ok(sales.Select(ProductSaleDto.FromProductSale));
     }
-    
+
+    [HttpPut("{id}")]
+    public ActionResult<ProductDto> UpdateProduct(int id, [FromBody] ProductUpdateDto productUpdateDto)
+    {
+        Product? result;
+        try
+        {
+            result = productService.UpdateProduct(id, productUpdateDto);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+        
+        if (result == null)
+            return NotFound();
+        
+        return Ok(ProductDto.FromProduct(result));
+    }
 }
