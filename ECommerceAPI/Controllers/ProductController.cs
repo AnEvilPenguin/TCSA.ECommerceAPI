@@ -30,4 +30,19 @@ public class ProductController(IProductService productService) : ControllerBase
 
         return Ok(ProductDto.FromProduct(result));
     }
+
+    [HttpGet("{id}/productSales")]
+    public ActionResult<IEnumerable<ProductSaleDto>> GetProductSales(int id, int skip = 0, int take = 50)
+    {
+        if (skip < 0 || take < 1)
+            return BadRequest();
+
+        var sales = productService.GetProductSale(id, skip, take);
+        
+        if (sales == null)
+            return NotFound();
+        
+        return Ok(sales.Select(ProductSaleDto.FromProductSale));
+    }
+    
 }
