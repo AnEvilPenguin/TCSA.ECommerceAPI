@@ -26,4 +26,14 @@ public class ProductService(CommerceContext dbContext) : IProductService
             .AsNoTracking()
             .FirstOrDefault(p => p.ID == id);
     }
+
+    public Product? PutProduct(ProductDto productDto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Product? PatchProduct(int id, object product)
+    {
+        throw new NotImplementedException();
+    }
 }

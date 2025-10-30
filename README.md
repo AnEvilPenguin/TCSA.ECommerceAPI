@@ -13,14 +13,14 @@ TODO
 
 # Requirements
 
-- [ ] The project needs to be an ASP.NET Core Web API, with Entity Framework and a choice of SQL Server or Sqlite as a database
-- [ ] The API needs to use Dependency Injection
+- [X] The project needs to be an ASP.NET Core Web API, with Entity Framework and a choice of SQL Server or Sqlite as a database
+- [X] The API needs to use Dependency Injection
 - [ ] The database needs to have at least three tables
-  - [ ] Products
+  - [X] Products
   - [ ] Categories
-  - [ ] Sales
-- [ ] Products and Sales need to have a many-to-many relationship
-- [ ] Products need to have a price. Multiple products can be sold in the same sale. 
+  - [X] Sales
+- [X] Products and Sales need to have a many-to-many relationship
+- [X] Products need to have a price. Multiple products can be sold in the same sale. 
 - [ ] A Postman Collection with all possible requests for the API must be provided
 - [ ] The GetProducts and GetSales endpoints must have pagination capabilities
 - [ ] In retail it's good practice to prevent the deletion of records. Feel free to add soft-deletes 

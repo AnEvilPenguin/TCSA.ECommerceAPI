@@ -1,3 +1,4 @@
+using ECommerceAPI;
 using ECommerceAPI.DataSource;
 using ECommerceAPI.Services;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<CommerceContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("CommerceContext")));
 
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddSwaggerGen(c => c.SchemaFilter<JsonPatchDocumentSchemaFilter>());
 
 var app = builder.Build();
 

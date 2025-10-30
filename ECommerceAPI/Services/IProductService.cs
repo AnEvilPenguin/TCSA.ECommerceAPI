@@ -7,4 +7,6 @@ public interface IProductService
 {
     public IEnumerable<ProductDto> GetProducts(int skip, int take);
     public Product? GetProduct(int id);
+    public Product? PutProduct(ProductDto productDto);
+    public Product? PatchProduct(int id, object product);
 }
