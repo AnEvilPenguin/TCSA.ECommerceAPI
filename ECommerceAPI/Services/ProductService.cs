@@ -25,7 +25,7 @@ public class ProductService(CommerceContext dbContext) : IProductService
 
     public IEnumerable<ProductSale>? GetProductSale(int id, int skip = 0, int take = 50)
     {
-        if (!dbContext.Products.Any(p => p.ID == id))
+        if (!dbContext.Products.Where(p => !p.Deleted).Any(p => p.ID == id))
             return null;
 
         return dbContext.ProductSales
