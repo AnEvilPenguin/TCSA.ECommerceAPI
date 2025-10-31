@@ -1,3 +1,4 @@
+using ECommerceAPI.Models;
 using ECommerceAPI.Models.DTOs;
 using ECommerceAPI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -42,4 +43,27 @@ public class SaleController (ISaleService saleService) : ControllerBase
 
         return Ok(sales.Select(ProductSaleDto.FromProductSale));
     }
+    
+    [HttpPut("{id}")]
+    public ActionResult<ProductDto> UpdateProduct(int id, [FromBody] SaleUpdateDto saleUpdateDto)
+    {
+        Sale? result;
+        try
+        {
+            result = saleService.UpdateSale(id, saleUpdateDto);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+
+        if (result == null)
+            return NotFound();
+
+        return Ok(SaleDto.FromSale(result));
+    }
+
+    [HttpDelete("{id}")]
+    public ActionResult DeleteSale(int id) =>
+        saleService.DeleteSale(id) ? Ok() : NotFound();
 }

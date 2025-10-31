@@ -14,3 +14,9 @@ public class SaleDto
             LastName = sale.LastName
         };
 }
+
+public class SaleUpdateDto
+{
+    public required string FirstName { get; set; }
+    public required string LastName { get; set; }
+}

@@ -1,5 +1,7 @@
 using ECommerceAPI.DataSource;
 using ECommerceAPI.Models;
+using ECommerceAPI.Models.DTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceAPI.Services;
 
@@ -30,7 +32,31 @@ public class SaleService(CommerceContext dbContext) : ISaleService
             .Skip(skip)
             .Take(take);
     }
-    
+
+    public Sale? UpdateSale(int id, SaleUpdateDto sale)
+    {
+        if (string.IsNullOrWhiteSpace(sale.FirstName) || string.IsNullOrWhiteSpace(sale.LastName))
+            throw new Exception("Both FirstName and LastName must be provided");
+
+        var rows = GetBaseSalesQuery()
+            .Where(s => s.ID == id)
+            .ExecuteUpdate(s =>
+                s.SetProperty(s => s.FirstName, sale.FirstName)
+                    .SetProperty(s => s.LastName, sale.LastName));
+        
+        return rows < 1 ? null : dbContext.Sales.Single(s => s.ID == id);
+    }
+
+    public bool DeleteSale(int id)
+    {
+        var rows = dbContext.Sales
+            .Where(s => s.ID == id)
+            .ExecuteUpdate(s =>
+                s.SetProperty(s => s.Deleted, true));
+
+        return rows < 1;
+    }
+
     private IQueryable<Sale> GetBaseSalesQuery() =>
         dbContext.Sales
         .Where(s => !s.Deleted);
