@@ -11,9 +11,21 @@ public class SaleController (ISaleService saleService) : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<SaleDto>> GetProducts(int skip = 0, int take = 50)
     {
+        // FIXME too many takes e.g. 5000
         if (skip < 0 || take < 1)
             return BadRequest();
 
         return Ok(saleService.GetSales(skip, take).Select(SaleDto.FromSale));
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<SaleDto> GetSale(int id)
+    {
+        var result = saleService.GetSale(id);
+        
+        if (result == null)
+            return NotFound();
+        
+        return Ok(SaleDto.FromSale(result));
     }
 }
