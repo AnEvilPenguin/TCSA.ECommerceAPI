@@ -7,7 +7,7 @@ namespace ECommerceAPI.Controllers;
 
 [ApiController]
 [Route("api/v1/[controller]")]
-public class SaleController (ISaleService saleService) : ControllerBase
+public class SaleController(ISaleService saleService) : ControllerBase
 {
     [HttpGet]
     public ActionResult<IEnumerable<SaleDto>> GetProducts(int skip = 0, int take = 50)
@@ -23,27 +23,30 @@ public class SaleController (ISaleService saleService) : ControllerBase
     public ActionResult<SaleDto> GetSale(int id)
     {
         var result = saleService.GetSale(id);
-        
+
         if (result == null)
             return NotFound();
-        
+
         return Ok(SaleDto.FromSale(result));
     }
-    
+
     [HttpGet("{id}/saleProducts")]
-    public ActionResult<IEnumerable<ProductSaleDto>> GetSaleProducts(int id, int skip = 0, int take = 50)
+    public ActionResult<IEnumerable<ProductSaleDto>> GetSaleProducts(int id, int? productId, int skip = 0,
+        int take = 50)
     {
         if (skip < 0 || take < 1)
             return BadRequest();
 
-        var sales = saleService.GetSaleProduct(id, skip, take);
+        var sales = productId == null
+            ? saleService.GetSaleProduct(id, skip, take)
+            : saleService.GetSaleProduct(id, productId.Value, skip, take);
 
         if (sales == null)
             return NotFound();
 
         return Ok(sales.Select(ProductSaleDto.FromProductSale));
     }
-    
+
     [HttpPut("{id}")]
     public ActionResult<ProductDto> UpdateProduct(int id, [FromBody] SaleUpdateDto saleUpdateDto)
     {
