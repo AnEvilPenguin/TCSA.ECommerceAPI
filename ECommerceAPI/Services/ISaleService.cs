@@ -6,4 +6,5 @@ public interface ISaleService
 {
     public IEnumerable<Sale> GetSales(int skip, int take);
     public Sale? GetSale(int id);
+    public IEnumerable<ProductSale>? GetSaleProduct(int id, int skip, int take);
 }

@@ -28,4 +28,18 @@ public class SaleController (ISaleService saleService) : ControllerBase
         
         return Ok(SaleDto.FromSale(result));
     }
+    
+    [HttpGet("{id}/saleProducts")]
+    public ActionResult<IEnumerable<ProductSaleDto>> GetSaleProducts(int id, int skip = 0, int take = 50)
+    {
+        if (skip < 0 || take < 1)
+            return BadRequest();
+
+        var sales = saleService.GetSaleProduct(id, skip, take);
+
+        if (sales == null)
+            return NotFound();
+
+        return Ok(sales.Select(ProductSaleDto.FromProductSale));
+    }
 }

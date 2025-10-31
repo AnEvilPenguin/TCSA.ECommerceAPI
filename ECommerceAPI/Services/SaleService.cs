@@ -18,6 +18,18 @@ public class SaleService(CommerceContext dbContext) : ISaleService
         return GetBaseSalesQuery()
             .FirstOrDefault(s => s.ID == id);
     }
+
+    public IEnumerable<ProductSale>? GetSaleProduct(int id, int skip, int take)
+    {
+        if (!GetBaseSalesQuery().Any(s => s.ID == id))
+            return null;
+
+        return dbContext.ProductSales
+            .Where(ps => ps.SaleID == id)
+            .OrderBy(ps => ps.ID)
+            .Skip(skip)
+            .Take(take);
+    }
     
     private IQueryable<Sale> GetBaseSalesQuery() =>
         dbContext.Sales
