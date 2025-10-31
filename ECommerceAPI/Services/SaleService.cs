@@ -7,8 +7,7 @@ public class SaleService(CommerceContext dbContext) : ISaleService
 {
     public IEnumerable<Sale> GetSales(int skip, int take)
     {
-        return dbContext.Sales
-            .Where(s => !s.Deleted)
+        return GetBaseSalesQuery()
             .OrderBy(s => s.ID)
             .Skip(skip)
             .Take(take);
@@ -16,8 +15,11 @@ public class SaleService(CommerceContext dbContext) : ISaleService
 
     public Sale? GetSale(int id)
     {
-        return dbContext.Sales
-            .Where(s => !s.Deleted)
+        return GetBaseSalesQuery()
             .FirstOrDefault(s => s.ID == id);
     }
+    
+    private IQueryable<Sale> GetBaseSalesQuery() =>
+        dbContext.Sales
+        .Where(s => !s.Deleted);
 }
