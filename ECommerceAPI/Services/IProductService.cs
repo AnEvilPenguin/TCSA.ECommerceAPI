@@ -9,4 +9,5 @@ public interface IProductService
     public Product? GetProduct(int id);
     public IEnumerable<ProductSale>? GetProductSale(int id, int skip, int take);
     public Product? UpdateProduct(int id, ProductUpdateDto productUpdateDto);
+    public bool DeleteProduct(int id);
 }

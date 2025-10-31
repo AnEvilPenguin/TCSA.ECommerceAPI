@@ -14,7 +14,7 @@ public class ProductController(IProductService productService) : ControllerBase
     {
         if (skip < 0 || take < 1)
             return BadRequest();
-        
+
         return Ok(productService.GetProducts(skip, take).Select(ProductDto.FromProduct));
     }
 
@@ -36,10 +36,10 @@ public class ProductController(IProductService productService) : ControllerBase
             return BadRequest();
 
         var sales = productService.GetProductSale(id, skip, take);
-        
+
         if (sales == null)
             return NotFound();
-        
+
         return Ok(sales.Select(ProductSaleDto.FromProductSale));
     }
 
@@ -55,10 +55,14 @@ public class ProductController(IProductService productService) : ControllerBase
         {
             return BadRequest(e.Message);
         }
-        
+
         if (result == null)
             return NotFound();
-        
+
         return Ok(ProductDto.FromProduct(result));
     }
+
+    [HttpDelete("{id}")]
+    public ActionResult DeleteProduct(int id) =>
+        productService.DeleteProduct(id) ? Ok() : NotFound();
 }

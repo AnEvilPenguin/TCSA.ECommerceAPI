@@ -50,4 +50,14 @@ public class ProductService(CommerceContext dbContext) : IProductService
 
         return rows < 1 ? null : dbContext.Products.Single(p => p.ID == id);
     }
+
+    public bool DeleteProduct(int id)
+    {
+        var rows = dbContext.Products
+            .Where(p => p.ID == id)
+            .ExecuteUpdate(s =>
+                s.SetProperty(p => p.Deleted, p => true));
+
+        return rows < 1;
+    }
 }
