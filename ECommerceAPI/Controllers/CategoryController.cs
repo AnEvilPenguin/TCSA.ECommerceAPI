@@ -1,0 +1,32 @@
+using ECommerceAPI.Models.DTOs;
+using ECommerceAPI.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace ECommerceAPI.Controllers;
+
+[ApiController]
+[Route("api/v1/[controller]")]
+public class CategoryController(ICategoryService categoryService) : ControllerBase
+{
+    [HttpGet]
+    public ActionResult<IEnumerable<CategoryDTO>> GetCategories(int skip = 0, int take = 50)
+    {
+        // FIXME too many takes e.g. 5000
+        if (skip < 0 || take < 1)
+            return BadRequest();
+
+        return Ok(categoryService.GetCategories(skip, take).Select(CategoryDTO.FromCategory));
+    }
+
+    [HttpGet("{id}")]
+    public ActionResult<CategoryDTO> GetCategoryById(int id)
+    {
+        var category = categoryService.GetCategoryById(id);
+
+        if (category == null)
+            return NotFound();
+        
+        return CategoryDTO.FromCategory(category);
+    }
+    
+}

@@ -11,6 +11,7 @@ public class CommerceContext : DbContext
     public DbSet<ProductSale> ProductSales { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Sale> Sales { get; set; }
+    public DbSet<Category> Categories { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -19,5 +20,6 @@ public class CommerceContext : DbContext
             .Property(e => e.Price)
             .HasPrecision(19, 6);;
         modelBuilder.Entity<Sale>().ToTable("Sale");
+        modelBuilder.Entity<Category>().ToTable("Category");
     }
 }
