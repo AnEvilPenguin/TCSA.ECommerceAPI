@@ -20,7 +20,7 @@ public class SaleService(CommerceContext dbContext) : ISaleService
         return GetBaseSalesQuery()
             .FirstOrDefault(s => s.ID == id);
     }
-    
+
     public IEnumerable<ProductSale>? GetSaleProduct(int id, int skip, int take)
     {
         if (!GetBaseSalesQuery().Any(s => s.ID == id))
@@ -32,7 +32,7 @@ public class SaleService(CommerceContext dbContext) : ISaleService
             .Skip(skip)
             .Take(take);
     }
-    
+
     public IEnumerable<ProductSale>? GetSaleProduct(int id, int productId, int skip, int take)
     {
         if (!GetBaseSalesQuery().Any(s => s.ID == id))
@@ -45,6 +45,22 @@ public class SaleService(CommerceContext dbContext) : ISaleService
             .Take(take);
     }
 
+    public decimal? GetSaleValue(int id)
+    {
+        var sale = GetBaseSalesQuery()
+            .Include(s => s.ProductSales)
+            .ThenInclude(sp => sp.Product)
+            .FirstOrDefault(s => s.ID == id);
+
+        if (sale == null)
+            return null;
+
+        return sale
+            .ProductSales?
+            .Select(s => s.Quantity * s.Product.Price)
+            .Aggregate((x, y) => x + y) ?? 0;
+    }
+
     public Sale? UpdateSale(int id, SaleUpdateDto sale)
     {
         if (string.IsNullOrWhiteSpace(sale.FirstName) || string.IsNullOrWhiteSpace(sale.LastName))
@@ -55,7 +71,7 @@ public class SaleService(CommerceContext dbContext) : ISaleService
             .ExecuteUpdate(s =>
                 s.SetProperty(s => s.FirstName, sale.FirstName)
                     .SetProperty(s => s.LastName, sale.LastName));
-        
+
         return rows < 1 ? null : dbContext.Sales.Single(s => s.ID == id);
     }
 
@@ -71,5 +87,5 @@ public class SaleService(CommerceContext dbContext) : ISaleService
 
     private IQueryable<Sale> GetBaseSalesQuery() =>
         dbContext.Sales
-        .Where(s => !s.Deleted);
+            .Where(s => !s.Deleted);
 }

@@ -46,6 +46,18 @@ public class SaleController(ISaleService saleService) : ControllerBase
 
         return Ok(sales.Select(ProductSaleDto.FromProductSale));
     }
+    
+    [HttpGet("{id}/saleValue")]
+    public ActionResult<decimal> GetSaleValue(int id)
+    {
+        var value = saleService.GetSaleValue(id);
+
+        if (value == null)
+            return NotFound();
+
+        return Ok(value);
+    }
+    
 
     [HttpPut("{id}")]
     public ActionResult<ProductDto> UpdateProduct(int id, [FromBody] SaleUpdateDto saleUpdateDto)

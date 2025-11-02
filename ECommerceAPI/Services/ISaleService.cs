@@ -9,6 +9,7 @@ public interface ISaleService
     public Sale? GetSale(int id);
     public IEnumerable<ProductSale>? GetSaleProduct(int id, int skip, int take);
     public IEnumerable<ProductSale>? GetSaleProduct(int id, int productId, int skip, int take);
+    public decimal? GetSaleValue(int id);
     public Sale? UpdateSale(int id, SaleUpdateDto sale);
     public bool DeleteSale(int id);
 }
