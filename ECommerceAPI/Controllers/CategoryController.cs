@@ -1,3 +1,4 @@
+using ECommerceAPI.Models;
 using ECommerceAPI.Models.DTOs;
 using ECommerceAPI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,27 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
             return NotFound();
         
         return CategoryDTO.FromCategory(category);
+    }
+    
+
+    [HttpPut("{id}")]
+    public ActionResult<CategoryDTO> UpdateCategory(int id, CategoryUpdateDTO categoryUpdateDto)
+    {
+        Category? result;
+
+        try
+        {
+            result = categoryService.UpdateCategory(id, categoryUpdateDto);
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+        
+        if (result == null)
+            return NotFound();
+
+        return Ok(CategoryDTO.FromCategory(result));
     }
     
 }

@@ -1,5 +1,7 @@
 using ECommerceAPI.DataSource;
 using ECommerceAPI.Models;
+using ECommerceAPI.Models.DTOs;
+using Microsoft.EntityFrameworkCore;
 
 namespace ECommerceAPI.Services;
 
@@ -17,6 +19,17 @@ public class CategoryService(CommerceContext dbContext) : ICategoryService
     {
         return GetBaseCategoryQuery()
             .FirstOrDefault(c => c.ID == id);
+    }
+
+    public Category? UpdateCategory(int id, CategoryUpdateDTO category)
+    {
+        var rows = dbContext.Categories
+            .Where(c => c.ID == id)
+            .ExecuteUpdate(s =>
+                s.SetProperty(c => c.Name, category.Name)
+                    .SetProperty(c => c.Description, category.Description));
+        
+        return rows < 1 ? null : dbContext.Categories.Single(c => c.ID == id);
     }
 
 

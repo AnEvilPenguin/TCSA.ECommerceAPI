@@ -14,3 +14,9 @@ public class CategoryDTO
             Description = category.Description
         };
 }
+
+public class CategoryUpdateDTO
+{
+    public string Name { get; set; }
+    public string Description { get; set; }
+}
