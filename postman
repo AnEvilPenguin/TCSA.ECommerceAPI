@@ -1,0 +1,1274 @@
+{
+	"info": {
+		"_postman_id": "91af0c49-10c8-4645-bcdf-bbbf06cbf098",
+		"name": "ECommerceAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "49586998",
+		"_collection_link": "https://anevilpenguin56-6243969.postman.co/workspace/ECommerceAPI~3e13e2eb-9ea1-4f7c-b57c-ca1794cfa82d/collection/49586998-91af0c49-10c8-4645-bcdf-bbbf06cbf098?action=share&source=collection_link&creator=49586998"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "v1",
+					"item": [
+						{
+							"name": "Category",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "/api/v1/Category/:id",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Category/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Category",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "9117"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Category/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Category",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"name\": \"string\",\n  \"id\": 4486,\n  \"description\": \"string\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Category/:id",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Category/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Category",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "9117"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Category/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Category",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"name\": \"string\",\n  \"id\": 4486,\n  \"description\": \"string\"\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Category/:id",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Category/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Category",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "9117"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Category/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Category",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/api/v1/Category",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/Category?skip=0&take=50",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"Category"
+											],
+											"query": [
+												{
+													"key": "skip",
+													"value": "0"
+												},
+												{
+													"key": "take",
+													"value": "50"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Category?skip=0&take=50",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Category"
+													],
+													"query": [
+														{
+															"key": "skip",
+															"value": "0"
+														},
+														{
+															"key": "take",
+															"value": "50"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"name\": \"string\",\n    \"id\": 5486,\n    \"description\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"id\": 9099,\n    \"description\": \"string\"\n  }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Product",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "productSales",
+											"item": [
+												{
+													"name": "/api/v1/Product/:id/productSales",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Product/:id/productSales?skip=0&take=50",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Product",
+																":id",
+																"productSales"
+															],
+															"query": [
+																{
+																	"key": "skip",
+																	"value": "0"
+																},
+																{
+																	"key": "take",
+																	"value": "50"
+																}
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "9117"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Product/:id/productSales?skip=0&take=50",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Product",
+																		":id",
+																		"productSales"
+																	],
+																	"query": [
+																		{
+																			"key": "skip",
+																			"value": "0"
+																		},
+																		{
+																			"key": "take",
+																			"value": "50"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "[\n  {\n    \"id\": 3999,\n    \"productId\": 8824,\n    \"saleId\": 640,\n    \"quantity\": 6531\n  },\n  {\n    \"id\": 4692,\n    \"productId\": 5268,\n    \"saleId\": 1191,\n    \"quantity\": 3505\n  }\n]"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Product/:id",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Product/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Product",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "9117"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Product/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Product",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"name\": \"string\",\n  \"id\": 1886,\n  \"description\": \"string\",\n  \"price\": 4962.238099311787\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Product/:id",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"price\": 3822.579727752282\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Product/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Product",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "9117"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"price\": 3822.579727752282\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Product/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Product",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"name\": \"string\",\n  \"id\": 1886,\n  \"description\": \"string\",\n  \"price\": 4962.238099311787\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Product/:id",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Product/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Product",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "9117"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Product/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Product",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/api/v1/Product",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/Product?skip=0&take=50&categoryId=9117",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"Product"
+											],
+											"query": [
+												{
+													"key": "skip",
+													"value": "0"
+												},
+												{
+													"key": "take",
+													"value": "50"
+												},
+												{
+													"key": "categoryId",
+													"value": "9117"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Product?skip=0&take=50&categoryId=9117",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Product"
+													],
+													"query": [
+														{
+															"key": "skip",
+															"value": "0"
+														},
+														{
+															"key": "take",
+															"value": "50"
+														},
+														{
+															"key": "categoryId",
+															"value": "9117"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"name\": \"string\",\n    \"id\": 4572,\n    \"description\": \"string\",\n    \"price\": 2328.171912590957\n  },\n  {\n    \"name\": \"string\",\n    \"id\": 2421,\n    \"description\": \"string\",\n    \"price\": 9623.624638522588\n  }\n]"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "Sale",
+							"item": [
+								{
+									"name": "{id}",
+									"item": [
+										{
+											"name": "saleProducts",
+											"item": [
+												{
+													"name": "/api/v1/Sale/:id/saleProducts",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Sale/:id/saleProducts?productId=9117&skip=0&take=50",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Sale",
+																":id",
+																"saleProducts"
+															],
+															"query": [
+																{
+																	"key": "productId",
+																	"value": "9117"
+																},
+																{
+																	"key": "skip",
+																	"value": "0"
+																},
+																{
+																	"key": "take",
+																	"value": "50"
+																}
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "9117"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Sale/:id/saleProducts?productId=9117&skip=0&take=50",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Sale",
+																		":id",
+																		"saleProducts"
+																	],
+																	"query": [
+																		{
+																			"key": "productId",
+																			"value": "9117"
+																		},
+																		{
+																			"key": "skip",
+																			"value": "0"
+																		},
+																		{
+																			"key": "take",
+																			"value": "50"
+																		}
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "[\n  {\n    \"id\": 3999,\n    \"productId\": 8824,\n    \"saleId\": 640,\n    \"quantity\": 6531\n  },\n  {\n    \"id\": 4692,\n    \"productId\": 5268,\n    \"saleId\": 1191,\n    \"quantity\": 3505\n  }\n]"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "saleValue",
+											"item": [
+												{
+													"name": "/api/v1/Sale/:id/saleValue",
+													"request": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Sale/:id/saleValue",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Sale",
+																":id",
+																"saleValue"
+															],
+															"variable": [
+																{
+																	"key": "id",
+																	"value": "9117"
+																}
+															]
+														}
+													},
+													"response": [
+														{
+															"name": "OK",
+															"originalRequest": {
+																"method": "GET",
+																"header": [
+																	{
+																		"key": "Accept",
+																		"value": "text/plain"
+																	}
+																],
+																"url": {
+																	"raw": "{{baseUrl}}/api/v1/Sale/:id/saleValue",
+																	"host": [
+																		"{{baseUrl}}"
+																	],
+																	"path": [
+																		"api",
+																		"v1",
+																		"Sale",
+																		":id",
+																		"saleValue"
+																	],
+																	"variable": [
+																		{
+																			"key": "id"
+																		}
+																	]
+																}
+															},
+															"status": "OK",
+															"code": 200,
+															"_postman_previewlanguage": "json",
+															"header": [
+																{
+																	"key": "Content-Type",
+																	"value": "application/json"
+																}
+															],
+															"cookie": [],
+															"body": "682.687150201442"
+														}
+													]
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Sale/:id",
+											"request": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Sale/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Sale",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "9117"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "GET",
+														"header": [
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Sale/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Sale",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"firstName\": \"string\",\n  \"lastName\": \"string\",\n  \"id\": 4345\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Sale/:id",
+											"request": {
+												"method": "PUT",
+												"header": [
+													{
+														"key": "Content-Type",
+														"value": "application/json"
+													},
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n  \"firstName\": \"string\",\n  \"lastName\": \"string\"\n}",
+													"options": {
+														"raw": {
+															"headerFamily": "json",
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Sale/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Sale",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "9117"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "PUT",
+														"header": [
+															{
+																"key": "Content-Type",
+																"value": "application/json"
+															},
+															{
+																"key": "Accept",
+																"value": "text/plain"
+															}
+														],
+														"body": {
+															"mode": "raw",
+															"raw": "{\n  \"firstName\": \"string\",\n  \"lastName\": \"string\"\n}",
+															"options": {
+																"raw": {
+																	"headerFamily": "json",
+																	"language": "json"
+																}
+															}
+														},
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Sale/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Sale",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "json",
+													"header": [
+														{
+															"key": "Content-Type",
+															"value": "application/json"
+														}
+													],
+													"cookie": [],
+													"body": "{\n  \"name\": \"string\",\n  \"id\": 1886,\n  \"description\": \"string\",\n  \"price\": 4962.238099311787\n}"
+												}
+											]
+										},
+										{
+											"name": "/api/v1/Sale/:id",
+											"request": {
+												"method": "DELETE",
+												"header": [],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Sale/:id",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Sale",
+														":id"
+													],
+													"variable": [
+														{
+															"key": "id",
+															"value": "9117"
+														}
+													]
+												}
+											},
+											"response": [
+												{
+													"name": "OK",
+													"originalRequest": {
+														"method": "DELETE",
+														"header": [],
+														"url": {
+															"raw": "{{baseUrl}}/api/v1/Sale/:id",
+															"host": [
+																"{{baseUrl}}"
+															],
+															"path": [
+																"api",
+																"v1",
+																"Sale",
+																":id"
+															],
+															"variable": [
+																{
+																	"key": "id"
+																}
+															]
+														}
+													},
+													"status": "OK",
+													"code": 200,
+													"_postman_previewlanguage": "text",
+													"header": [],
+													"cookie": [],
+													"body": ""
+												}
+											]
+										}
+									]
+								},
+								{
+									"name": "/api/v1/Sale",
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "text/plain"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/api/v1/Sale?skip=0&take=50",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"Sale"
+											],
+											"query": [
+												{
+													"key": "skip",
+													"value": "0"
+												},
+												{
+													"key": "take",
+													"value": "50"
+												}
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "OK",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "text/plain"
+													}
+												],
+												"url": {
+													"raw": "{{baseUrl}}/api/v1/Sale?skip=0&take=50",
+													"host": [
+														"{{baseUrl}}"
+													],
+													"path": [
+														"api",
+														"v1",
+														"Sale"
+													],
+													"query": [
+														{
+															"key": "skip",
+															"value": "0"
+														},
+														{
+															"key": "take",
+															"value": "50"
+														}
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												}
+											],
+											"cookie": [],
+											"body": "[\n  {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"id\": 2075\n  },\n  {\n    \"firstName\": \"string\",\n    \"lastName\": \"string\",\n    \"id\": 9778\n  }\n]"
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "/"
+		}
+	]
+}
