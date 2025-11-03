@@ -32,6 +32,16 @@ public class CategoryService(CommerceContext dbContext) : ICategoryService
         return rows < 1 ? null : dbContext.Categories.Single(c => c.ID == id);
     }
 
+    public bool DeleteCategory(int id)
+    {
+        var rows = dbContext.Categories
+            .Where(c => c.ID == id)
+            .ExecuteUpdate(s =>
+                s.SetProperty(c => c.Deleted, true));
+        
+        return rows < 1;
+    }
+
 
     private IQueryable<Category> GetBaseCategoryQuery() =>
         dbContext.Categories

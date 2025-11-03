@@ -50,5 +50,9 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
 
         return Ok(CategoryDTO.FromCategory(result));
     }
+
+    [HttpDelete("{id}")]
+    public ActionResult DeleteCategory(int id) =>
+        categoryService.DeleteCategory(id) ? Ok() : NotFound();
     
 }
