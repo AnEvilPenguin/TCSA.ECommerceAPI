@@ -16,6 +16,17 @@ public class ProductService(CommerceContext dbContext) : IProductService
             .Take(take);
     }
 
+    public IEnumerable<Product> GetProducts(int categoryId, int skip, int take)
+    {
+        return dbContext.Products
+            .Include(p => p.Categories)
+            .Where(p => !p.Deleted && p.Categories.Any(c => !c.Deleted && c.ID == categoryId))
+            .OrderBy(p => p.ID)
+            .Skip(skip)
+            .Take(take);
+    }
+    
+
     public Product? GetProduct(int id)
     {
         return dbContext.Products

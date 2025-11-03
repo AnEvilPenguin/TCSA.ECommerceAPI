@@ -10,12 +10,16 @@ namespace ECommerceAPI.Controllers;
 public class ProductController(IProductService productService) : ControllerBase
 {
     [HttpGet]
-    public ActionResult<IEnumerable<ProductDto>> GetProducts(int skip = 0, int take = 50)
+    public ActionResult<IEnumerable<ProductDto>> GetProducts(int skip = 0, int take = 50, int? categoryId = null)
     {
         if (skip < 0 || take < 1)
             return BadRequest();
+        
+        var products = categoryId == null ?
+            productService.GetProducts(skip, take) :
+            productService.GetProducts(categoryId.Value, skip, take);
 
-        return Ok(productService.GetProducts(skip, take).Select(ProductDto.FromProduct));
+        return Ok(products.Select(ProductDto.FromProduct));
     }
 
     [HttpGet("{id}")]
