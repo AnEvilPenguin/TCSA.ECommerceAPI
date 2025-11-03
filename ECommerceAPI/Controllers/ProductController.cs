@@ -12,7 +12,7 @@ public class ProductController(IProductService productService) : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<ProductDto>> GetProducts(int skip = 0, int take = 50, int? categoryId = null)
     {
-        if (skip < 0 || take < 1)
+        if (skip < 0 || take < 1 || take > 100)
             return BadRequest();
         
         var products = categoryId == null ?

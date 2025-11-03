@@ -12,8 +12,7 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
     [HttpGet]
     public ActionResult<IEnumerable<CategoryDTO>> GetCategories(int skip = 0, int take = 50)
     {
-        // FIXME too many takes e.g. 5000
-        if (skip < 0 || take < 1)
+        if (skip < 0 || take < 1 || take > 100)
             return BadRequest();
 
         return Ok(categoryService.GetCategories(skip, take).Select(CategoryDTO.FromCategory));

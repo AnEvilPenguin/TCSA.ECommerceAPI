@@ -12,8 +12,7 @@ public class SaleController(ISaleService saleService) : ControllerBase
     [HttpGet]
     public ActionResult<IEnumerable<SaleDto>> GetProducts(int skip = 0, int take = 50)
     {
-        // FIXME too many takes e.g. 5000
-        if (skip < 0 || take < 1)
+        if (skip < 0 || take < 1 || take > 100)
             return BadRequest();
 
         return Ok(saleService.GetSales(skip, take).Select(SaleDto.FromSale));
