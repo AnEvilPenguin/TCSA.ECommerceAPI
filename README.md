@@ -58,6 +58,8 @@ product?
 - [ ] Export data to different formats
 - [ ] Periodic report functionality
 - [ ] Import/Export to an Azure Blob for further processing
+- [ ] Deal with potentially dodgy file formats
+  - [ ] FileSignatures package  ~~or MimeDetective~~? Former looks more interesting
 
 # Challenges
 
