@@ -1,5 +1,8 @@
 namespace ECommerceAPI.Models.DTOs;
 
+// FIXME This class is not necessary
+// https://learn.microsoft.com/en-us/ef/core/modeling/relationships/many-to-many
+
 public class ProductSaleDto
 {
     public int ID { get; set; }
