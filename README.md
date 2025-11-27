@@ -41,12 +41,23 @@ database
 - [X] In retail it's good practice to prevent the deletion of records. Feel free to add soft-deletes 
 - [X] You shouldn't update product prices. What would happen if you made a sale and later updated the price of that 
 product?
+- [ ] Seed data from a spreadsheet when there is no data present
+- [ ] Report functionality
+  - [ ] Wrtie report to a local PDF
+- [ ] Handle errors gracefully
+  - [ ] Incorrect path
+  - [ ] Permissions issues
+  - [ ] File corruption
 
 
 ## Stretch Goals
 
 - [X] Add filtering and sorting capabilities to the endpoints
 - [ ] Create a console UI to consume the Web API
+- [ ] Seed data from choice of file formats
+- [ ] Export data to different formats
+- [ ] Periodic report functionality
+- [ ] Import/Export to an Azure Blob for further processing
 
 # Challenges
 
