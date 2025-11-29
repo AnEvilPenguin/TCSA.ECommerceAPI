@@ -1,3 +1,4 @@
+using ECommerceAPI.Models;
 using ECommerceAPI.Models.Options;
 using FileSignatures;
 using Microsoft.Extensions.Options;
@@ -15,7 +16,7 @@ public class FileSeeder(
     // TODO CSV Service
     // TODO Excel Service
 
-    public void GetProducts()
+    public IEnumerable<Product> GetProducts()
     {
         var path = _options.Products?.Path;
         
@@ -27,16 +28,11 @@ public class FileSeeder(
         if (format == null)
         {
             logger.LogError($"File {path} not found");
-            return;
+            throw new FileNotFoundException($"File {path} not found");
         }
 
-        if (format.MediaType == "text/plain" || format.MediaType == "text/csv")
-        {
-            var products = csvSeeder.GetProducts(path);
-            
-            foreach (var product in products)
-                Console.WriteLine(product.Name);
-        }
+        if (format.MediaType is "text/plain" or "text/csv")
+            return csvSeeder.GetProducts(path);
 
         logger.LogInformation("Seeding Products");
         throw new NotImplementedException();

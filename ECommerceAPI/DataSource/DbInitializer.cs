@@ -15,9 +15,15 @@ public class DbInitializer (CommerceContext context, IOptions<SeedDataOptions> c
         
         if (!_options.Enabled)
             return;
-        
+
         if (!context.Products.Any() && _options.Products != null)
-            _seeder.GetProducts();
+        {
+            var products = _seeder.GetProducts();
+            
+            context.Products.AddRange(products);
+            context.SaveChanges();
+        }
+            
         
         // TODO check configuration
         // if no seed data use static ones

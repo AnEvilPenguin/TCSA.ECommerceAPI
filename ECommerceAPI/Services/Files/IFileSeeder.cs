@@ -1,6 +1,8 @@
+using ECommerceAPI.Models;
+
 namespace ECommerceAPI.Services.Files;
 
 public interface IFileSeeder
 {
-    public void GetProducts();
+    public IEnumerable<Product> GetProducts();
 }

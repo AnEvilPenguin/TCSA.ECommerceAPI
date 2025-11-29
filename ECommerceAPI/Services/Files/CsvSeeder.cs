@@ -11,6 +11,8 @@ public sealed class CsvSeeder(ILogger<CsvSeeder> logger) : ICsvSeeder
     {
         HasHeaderRecord = true,
         PrepareHeaderForMatch = args => args.Header.ToLower(),
+        HeaderValidated = null,
+        MissingFieldFound = null,
     };
 
     public IEnumerable<Product> GetProducts(string path)
