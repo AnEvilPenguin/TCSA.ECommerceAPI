@@ -1,16 +1,31 @@
 using ECommerceAPI.Models;
+using ECommerceAPI.Models.Options;
+using ECommerceAPI.Services.Files;
+using Microsoft.Extensions.Options;
 
 namespace ECommerceAPI.DataSource;
 
-public class DbInitializer
+public class DbInitializer (CommerceContext context, IOptions<SeedDataOptions> configuration, IFileSeeder _seeder) : IDbInitialzer
 {
-    public static void Initialize(CommerceContext context)
+    private readonly SeedDataOptions _options = configuration.Value;
+    
+    public void Initialize()
     {
-        if (context.Products.Any())
-        {
+        context.Database.EnsureCreated();
+        
+        if (!_options.Enabled)
             return;
-        }
+        
+        if (!context.Products.Any() && _options.Products != null)
+            _seeder.GetProducts();
+        
+        // TODO check configuration
+        // if no seed data use static ones
+        // else start processing files
+    }
 
+    private static void StaticSeeding(CommerceContext context)
+    {
         Product sa = new() { Name = "Shadow Alchemist: Alchemy in the Shadows", Price = new decimal(3.50d) };
         Product fe = new()
             { Name = "F-You Earth!", Description = "My second game jam entry", Price = new decimal(4.20d) };
