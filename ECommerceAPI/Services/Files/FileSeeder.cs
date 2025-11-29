@@ -7,7 +7,8 @@ namespace ECommerceAPI.Services.Files;
 public class FileSeeder(
     ILogger<FileSeeder> logger,
     IOptions<SeedDataOptions> configuration,
-    IFileFormatInspector formatInspector) : IFileSeeder
+    IFileFormatInspector formatInspector,
+    ICsvSeeder csvSeeder) : IFileSeeder
 {
     private readonly SeedDataOptions _options = configuration.Value;
 
@@ -31,7 +32,10 @@ public class FileSeeder(
 
         if (format.MediaType == "text/plain" || format.MediaType == "text/csv")
         {
-            Console.WriteLine("CSV");
+            var products = csvSeeder.GetProducts(path);
+            
+            foreach (var product in products)
+                Console.WriteLine(product.Name);
         }
 
         logger.LogInformation("Seeding Products");

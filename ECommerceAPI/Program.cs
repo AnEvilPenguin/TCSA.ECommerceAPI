@@ -20,6 +20,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ISaleService, SaleService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IFileSeeder, FileSeeder>();
+builder.Services.AddScoped<ICsvSeeder, CsvSeeder>();
 
 builder.Services.Configure<SeedDataOptions>(builder.Configuration.GetSection("SeedData"));
 
