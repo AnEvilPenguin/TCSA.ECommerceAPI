@@ -21,10 +21,15 @@ builder.Services.AddScoped<ISaleService, SaleService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IFileSeeder, FileSeeder>();
 builder.Services.AddScoped<ICsvSeeder, CsvSeeder>();
+builder.Services.AddScoped<IExcelSeeder, ExcelSeeder>();
+builder.Services.AddScoped<IExcelReader, ExcelReader>();
 
 builder.Services.Configure<SeedDataOptions>(builder.Configuration.GetSection("SeedData"));
 
-builder.Services.AddSingleton<IFileFormatInspector>(new FileFormatInspector([new TextDocument()]));
+var assembly = typeof(TextDocument).Assembly;
+var allFormats = FileFormatLocator.GetFormats(assembly, true);
+
+builder.Services.AddSingleton<IFileFormatInspector>(new FileFormatInspector(allFormats));
 builder.Services.AddSingleton<IDbInitialzer, DbInitializer>();
 
 var app = builder.Build();

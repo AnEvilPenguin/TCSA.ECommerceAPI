@@ -9,7 +9,8 @@ public class FileSeeder(
     ILogger<FileSeeder> logger,
     IOptions<SeedDataOptions> configuration,
     IFileFormatInspector formatInspector,
-    ICsvSeeder csvSeeder) : IFileSeeder
+    ICsvSeeder csvSeeder,
+    IExcelSeeder excelSeeder) : IFileSeeder
 {
     private readonly SeedDataOptions _options = configuration.Value;
 
@@ -106,6 +107,8 @@ public class FileSeeder(
 
         if (format.MediaType is "text/plain" or "text/csv")
             return csvSeeder;
+        if (format.MediaType == "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+            return excelSeeder;
 
         return null;
     }
