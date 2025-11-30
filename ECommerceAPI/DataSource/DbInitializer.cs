@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 
 namespace ECommerceAPI.DataSource;
 
-public class DbInitializer (CommerceContext context, IOptions<SeedDataOptions> configuration, IFileSeeder _seeder) : IDbInitialzer
+public class DbInitializer (CommerceContext context, IOptions<SeedDataOptions> configuration, IFileSeeder _seeder, ILogger<DbInitializer> logger) : IDbInitialzer
 {
     private readonly SeedDataOptions _options = configuration.Value;
     
@@ -18,13 +18,50 @@ public class DbInitializer (CommerceContext context, IOptions<SeedDataOptions> c
 
         if (!context.Products.Any() && _options.Products != null)
         {
-            var products = _seeder.GetProducts();
-            
-            context.Products.AddRange(products);
+            context.Products.AddRange(_seeder.GetProducts());
             context.SaveChanges();
         }
+
+        if (!context.Categories.Any() && _options.Categories != null)
+        {
+            var categories = _seeder.GetCategories();
+            // possibly need to look up products
             
-        
+            context.Categories.AddRange(categories);
+            context.SaveChanges();
+        }
+
+        if (!context.Sales.Any() && _options.Sales != null)
+        {
+            context.Sales.AddRange(_seeder.GetSales());
+            context.SaveChanges();
+        }
+
+        if (!context.ProductSales.Any() && _options.ProductSales != null)
+        {
+            var productSales = _seeder.GetProductSales();
+
+            foreach (var item in productSales)
+            {
+                var product = context.Products.Find(item.ProductID);
+                var sale = context.Sales.Find(item.SaleID);
+                
+                if (product == null)
+                    logger.LogError($"Product {item.ProductID} not found");
+                if (sale == null)
+                    logger.LogError($"Sale {item.SaleID} not found");
+                
+                if (product == null || sale == null)
+                    continue;
+                
+                item.Product = product;
+                item.Sale = sale;
+                
+                context.ProductSales.Add(item);
+            }
+            
+            context.SaveChanges();
+        }
         // TODO check configuration
         // if no seed data use static ones
         // else start processing files
