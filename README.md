@@ -192,6 +192,9 @@ have moved a lot to a common base class if I had worked on it harder.
 
 On the file expansion side of things I think it's mostly Azure Blob. I'm glad I started this, but I 
 probably need to look at it in more detail. This was a very limited expansion of my report capability here.
+Whilst I didn't look at scheduling here, I went rogue on the previous project with my scheduling so I'm
+not too worried about missing that.  
+All in all I think I hit all the stretch goals I cared about here!
 
 # Resources Used
 
@@ -217,3 +220,4 @@ Here are the key ones from my history:
 - https://stackoverflow.com/questions/42460198/return-file-in-asp-net-core-web-api
 - https://learn.microsoft.com/en-us/office/open-xml/spreadsheet/structure-of-a-spreadsheetml-document?tabs=cs
 - https://joshclose.github.io/CsvHelper/
+- https://github.com/neilharvey/FileSignatures
