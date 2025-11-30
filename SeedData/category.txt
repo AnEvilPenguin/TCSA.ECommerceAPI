@@ -1,0 +1,4 @@
+Name,Description,Deleted
+Category1,"Desc1",false
+Category2,"Desc2,2",false
+Category3,Desc3,true

@@ -1,0 +1,4 @@
+firstName,lastname,deleted
+John,Doe,false
+Jane,Doe,false
+Caren,Doe,true
