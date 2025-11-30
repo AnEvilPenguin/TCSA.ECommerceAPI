@@ -1,0 +1,4 @@
+Name,Description,Price,Deleted
+Product1,"Desc1",3.50,false
+Product2,"Desc2,2",4.2,false
+Product3,Desc3,6.90,true
