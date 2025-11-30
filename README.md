@@ -25,6 +25,62 @@ Server. During development the sa account was used. However, it should be possib
 as long as it can create a database and tables. If no database or tables are present the application will seed some data 
 for you.
 
+If you would like to seed data into the database you can do so by providing `SeedData` settings via `appsettings.json`:
+
+```json
+"SeedData": {
+  "Enabled": true,
+  "Products": {
+    "Path": "../../../../SeedData/product.csv"
+  },
+  "Categories": {
+    "Path": "../../../../SeedData/category.txt"
+  },
+  "Sales": {
+    "Path": "../../../../SeedData/sale"
+  },
+  "ProductSales": {
+    "Path": "../../../../SeedData/productSale.csv"
+  }
+},
+```
+
+The program will autodetect the file type and seed data based on this.  
+Currently CSV and Excel (xlsx) files are supported.  
+If using xlsx you may also wish to provide a specific sheet name to pull from. 
+If you do not provide a specific sheet name it will be assumed that the first sheet contains 
+the required data.
+
+```json
+"SeedData": {
+    "Enabled": true,
+    "Products": {
+      "Path": "../../../../SeedData/SeedData.xlsx",
+      "Sheet": "Product"
+    },
+    "Categories": {
+      "Path": "../../../../SeedData/SeedData.xlsx",
+      "Sheet": "Category"
+    },
+    "Sales": {
+      "Path": "../../../../SeedData/SeedData.xlsx",
+      "Sheet": "Sale"
+    },
+    "ProductSales": {
+      "Path": "../../../../SeedData/SeedData.xlsx",
+      "Sheet": "ProductSale"
+    }
+  },
+```
+
+Omitting a type will be taken as not wanting to seed that data.  
+E.g. Omitting `Products` will be taken as not wanting to seed product data.
+If relying on product data for other seeding (e.g. `ProductSales`) ensure that the required product data is
+entered into the table via another route. Any values with mising references will be skipped.
+
+Examples of valid files can be found in the [SeedData](SeedData) folder.  
+Optional columns can be omitted, but must be filled in entirely if provided.
+
 # Requirements
 
 - [X] The project needs to be an ASP.NET Core Web API, with Entity Framework and a choice of SQL Server or Sqlite as a 
@@ -41,25 +97,25 @@ database
 - [X] In retail it's good practice to prevent the deletion of records. Feel free to add soft-deletes 
 - [X] You shouldn't update product prices. What would happen if you made a sale and later updated the price of that 
 product?
-- [ ] Seed data from a spreadsheet when there is no data present
+- [X] Seed data from a spreadsheet when there is no data present
 - [ ] Report functionality
-  - [ ] Wrtie report to a local PDF
-- [ ] Handle errors gracefully
-  - [ ] Incorrect path
-  - [ ] Permissions issues
-  - [ ] File corruption
+  - [ ] Write report to a local PDF
+- [X] Handle errors gracefully
+  - [X] Incorrect path
+  - [X] Permissions issues
+  - [X] File corruption
 
 
 ## Stretch Goals
 
 - [X] Add filtering and sorting capabilities to the endpoints
 - [ ] Create a console UI to consume the Web API
-- [ ] Seed data from choice of file formats
+- [X] Seed data from choice of file formats
 - [ ] Export data to different formats
 - [ ] Periodic report functionality
 - [ ] Import/Export to an Azure Blob for further processing
-- [ ] Deal with potentially dodgy file formats
-  - [ ] FileSignatures package  ~~or MimeDetective~~? Former looks more interesting
+- [X] Deal with potentially dodgy file formats
+  - [X] FileSignatures package  ~~or MimeDetective~~? Former looks more interesting
 
 # Challenges
 
